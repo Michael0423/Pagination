@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <style>
+        .ui-pagination .active a {
+            color: #F8D745;   
+        }
+
+        .ui-pagination {            
+            max-width: 80%;
+            max-height: 30px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .ui-pagination-item {
+            margin: 0 10px auto;
+        }
+
+        .ui-pagination .prev {
+            float: left;
+        }
+        .ui-pagination .next {
+            float: right;
+        }
+        .ui-pagination .index {
+            float: left ;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>Page:</span><input type="number" name="pages" id="pages">
+        <button id="submit">submit</button>
+    </div>
+    <div>
+        <div>Result:</div>
+        <div id="app">
+        </div>
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js" integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g=" crossorigin="anonymous"></script>
+    <script src="pagination.js"></script>
+    
+    <script type="text/javascript">
+        let el = $("#app");
+
+        $(el).pagination({
+            totalPage: 99,
+            showRemind: true,
+            onSelect: function ( index, el ){
+                
+            }
+        });
+
+        $('#submit').click(function(){
+            let pages = $('#pages').val();
+
+            $(el).empty();
+            $(el).pagination({
+                totalPage: pages,
+                showRemind: true,
+                onSelect: function ( index, el ){
+                    alert(`page ${index} is click.`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
