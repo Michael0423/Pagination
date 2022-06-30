@@ -26,28 +26,43 @@
         this.toTop = function(){
             self.currentPage = 1;
             self.render();
+            if(typeof opts.onSelect === "function"){
+                opts.onSelect(self.currentPage, null);
+            }
         }
 
         this.toBottom = function(){
             self.currentPage = self.totalPage;
             self.render();
+            if(typeof opts.onSelect === "function"){
+                opts.onSelect(self.currentPage, null);
+            }
         }
 
         this.toPrev = function() {
             self.currentPage--;
             if(self.isEnd()) self.currentPage = 1;
             self.render();
+            if(typeof opts.onSelect === "function"){
+                opts.onSelect(self.currentPage, null);
+            }
         }
 
         this.toNext = function() {
             self.currentPage++;
             if(self.isEnd()) self.currentPage = self.totalPage;
             self.render();
+            if(typeof opts.onSelect === "function"){
+                opts.onSelect(self.currentPage, null);
+            }
         }
 
         this.gotoPage = function (index) {
             self.currentPage = index;
             self.render();
+            if(typeof opts.onSelect === "function"){
+                opts.onSelect(self.currentPage, null);
+            }
         }
 
         this.render = function () {

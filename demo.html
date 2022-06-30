@@ -42,6 +42,10 @@
     </div>
     <div>
         <div>Result:</div>
+        <div>
+            <span>目前所在分頁:</span>
+            <span id="current_page">1</span>
+        </div>
         <div id="app">
         </div>
     </div>
@@ -57,7 +61,7 @@
             totalPage: 99,
             showRemind: true,
             onSelect: function ( index, el ){
-                
+                $('#current_page').html(index);
             }
         });
 
@@ -69,7 +73,7 @@
                 totalPage: pages,
                 showRemind: true,
                 onSelect: function ( index, el ){
-                    alert(`page ${index} is click.`);
+                    $('#current_page').html(index);
                 }
             });
         });
